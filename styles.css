@@ -1,16 +1,39 @@
 /* Custom styles for Cultivo Urbano Urquiza */
 
 body {
-    padding-top: 20px;
+   /*  padding-top: 20px; */
     background-color: #222427;
 }
 
-header h1 {
+header {
+    display: flex;
+    margin: 2rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-main {
+    display: flex;
+    flex-direction: column;
+    margin: 5rem;
+}
+
+
+header img {
+    height: 100px;
+    width: 300px;
+
+}
+
+ h1 {
     font-family: "Bebas Neue", sans-serif;
     color: #fefeff;
-    justify-content: space-between;
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: 100;
+    margin-top: 0;
 }
 
 header h2 {
@@ -30,6 +53,99 @@ main h3 {
     margin: 2rem;
 }
 
-#cart-list{
+.subtitle {
+    /* position: absolute; */
+    padding-left: 25rem;
+    bottom: -1em;
+    font-size: 1.2em;
+    color: gray;
+}
+
+
+
+
+/* Estilos para el carrito  */
+#cart-list {
+    border: 1px solid #ccc;
+    padding: 1em;
+    border-radius: 5px;
+    max-height: 300px;
+    overflow-y: auto;
     color: #fefeff;
+    background-color: #343A40;
+}
+
+#cart-list div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#total-price {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Estilos para los botones */
+.btn-primary {
+    background-color: #28A745;
+    border-color: #C8D300;
+    color: white;
+    margin: 0.3rem;
+}
+
+.btn-primary:hover {
+    background-color: #0f7c09;
+    border-color: #C8D300;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #117a8b;
+    border-color: #117a8b;
+}
+
+
+/* Footer estilos */
+footer {
+    font-family: "Nunito Sans", sans-serif;
+    color: white;
+    font-size: 14px;
+    justify-content: center;
+    gap: 20px;
+    display: flex;
+    padding: 20px;
+/*     margin-top: 50px; */
+}
+
+footer .redes {
+    color: white;
+    text-decoration: none;
+    margin-top: 60px;
+    transition: color 1.5s; /* Añadido para la transición del hover */
+
+}
+
+footer .redes:hover {
+    color: #0A58CA;
+}
+
+footer .redes img {
+    width: 24px;
+    margin-right: 5px;
 }

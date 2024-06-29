@@ -25,8 +25,10 @@ function displayProducts() {
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text">$${product.price}</p>
-                    <button class="btn btn-primary" onclick="addToCart(${product.id})">Agregar</button>
-                    <button class="btn btn-info" onclick="showProductDetails(${product.id})">Información</button>
+                    <div class="button-container">
+                        <button class="btn btn-primary" onclick="addToCart(${product.id})">Agregar</button>
+                        <button class="btn btn-info" onclick="showProductDetails(${product.id})">Información</button>
+                    </div>
                 </div>
             </div>
         `;
