@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultivo Urbano Urquiza</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Nuevas fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <header class="my-4">
+            <h1 class="text-center">Cultivo Urbano Urquiza</h1>
+            <h2 class="subtitle">Compra desde tu casa</h2>
+        </header>
+        <main>
+            <div class="row">
+                <!-- Productos -->
+                <div class="col-md-8">
+                    <h3 class="main-title">Productos</h3>
+                    <div id="product-list" class="row">
+                        <!-- Aquí se inyectarán los productos -->
+                    </div>
+                </div>
+                <!-- Carrito de Compras -->
+                <div class="col-md-4">
+                    <h3 class="main-title">Carrito de Compras</h3>
+                    <div id="cart-list">
+                        <!-- Aquí se inyectarán los productos del carrito -->
+                    </div>
+                    <p>Total: $<span id="total-price">0</span></p>
+                    <button class="btn btn-success" onclick="finalizePurchase()">Finalizar Compra</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- Custom JS -->
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+/* Custom styles for Cultivo Urbano Urquiza */
+
+body {
+    padding-top: 20px;
+    background-color: #222427;
+}
+
+header h1 {
+    font-family: "Bebas Neue", sans-serif;
+    color: #fefeff;
+    justify-content: space-between;
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+header h2 {
+    font-family: "Karla", sans-serif;
+    color: #fefeff;
+    font-size: 1rem;
+    text-align: center;
+    justify-content: center;
+}
+
+main h3 {
+    font-family: "Montserrat", sans-serif;
+    color: #fefeff;
+}
+
+.main-title{
+    margin: 2rem;
+}
+
+#cart-list{
+    color: #fefeff;
+}
