@@ -1,7 +1,6 @@
-/* Custom styles for Cultivo Urbano Urquiza */
 
 body {
-   /*  padding-top: 20px; */
+    font-family: "Nunito", sans-serif;
     background-color: #222427;
 }
 
@@ -21,14 +20,13 @@ header {
     margin: 5rem;
 }
 
-
 header img {
     height: 100px;
     width: 300px;
 
 }
 
- h1 {
+h1 {
     font-family: "Bebas Neue", sans-serif;
     color: #fefeff;
     font-size: 5rem;
@@ -54,7 +52,6 @@ main h3 {
 }
 
 .subtitle {
-    /* position: absolute; */
     padding-left: 25rem;
     bottom: -1em;
     font-size: 1.2em;
@@ -66,19 +63,27 @@ main h3 {
 
 /* Estilos para el carrito  */
 #cart-list {
-    border: 1px solid #ccc;
     padding: 1em;
-    border-radius: 5px;
-    max-height: 300px;
+    border-radius: 10px;
+    max-height: 400px;
     overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: #fefeff;
-    background-color: #343A40;
+    margin-bottom: 1rem;
 }
 
 #cart-list div {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background-color: #3d4145;
+    border-radius: 5px;
+}
+
+#cart-list div:last-child {
+    margin-bottom: 0;
 }
 
 #total-price {
@@ -86,17 +91,14 @@ main h3 {
     font-size: 1.2em;
 }
 
-.card {
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+#empty-cart-message {
+    color: #ccc;
+    text-align: center;
 }
 
 
-/* Estilos para los botones */
+
+/* Estilos para los botones de las cards */
 .btn-primary {
     background-color: #28A745;
     border-color: #C8D300;
@@ -121,6 +123,7 @@ main h3 {
 }
 
 
+
 /* Footer estilos */
 footer {
     font-family: "Nunito Sans", sans-serif;
@@ -130,15 +133,13 @@ footer {
     gap: 20px;
     display: flex;
     padding: 20px;
-/*     margin-top: 50px; */
 }
 
 footer .redes {
     color: white;
     text-decoration: none;
     margin-top: 60px;
-    transition: color 1.5s; /* Añadido para la transición del hover */
-
+    transition: color 1.5s; 
 }
 
 footer .redes:hover {
@@ -162,3 +163,86 @@ footer .redes img {
     margin: 0 auto;
 }
 
+
+
+/* Cards productos */
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-title {
+    font-family: "Nunito", sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    font-family: "Nunito", sans-serif;
+    font-size: 1rem;
+    color: #555;
+}
+
+.btn {
+    transition: background-color 0.2s, color 0.2s;
+}
+
+
+
+/* Modales */
+
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    border-bottom: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #f8f9fa;
+    padding: 1rem 1.5rem;
+}
+
+.modal-title {
+    font-size: 1.75rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+    font-size: 1rem;
+}
+
+.modal-footer {
+    border-top: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #f8f9fa;
+    padding: 1rem 1.5rem;
+}
+
+.close {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.close:hover {
+    color: #000;
+}

@@ -67,6 +67,34 @@ function addToCart(productId) {
 }
 
 // Actualizar carrito
+
+function updateCart() {
+    const cartList = document.getElementById('cart-list');
+    const emptyCartMessage = document.getElementById('empty-cart-message');
+    const finalizePurchaseBtn = document.getElementById('finalize-purchase-btn');
+
+    cartList.innerHTML = '';
+    if (cart.length === 0) {
+        emptyCartMessage.style.display = 'block';
+        finalizePurchaseBtn.style.display = 'none';
+    } else {
+        emptyCartMessage.style.display = 'none';
+        finalizePurchaseBtn.style.display = 'block';
+    }
+
+    cart.forEach((product, index) => {
+        const cartItem = document.createElement('div');
+        cartItem.className = 'mb-2';
+        cartItem.innerHTML = `
+            <div>${product.name} - $${product.price} <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Eliminar</button></div>
+        `;
+        cartList.appendChild(cartItem);
+    });
+    const totalPrice = cart.reduce((total, product) => total + product.price, 0);
+    document.getElementById('total-price').innerText = totalPrice;
+}
+
+/* 
 function updateCart() {
     const cartList = document.getElementById('cart-list');
     cartList.innerHTML = '';
@@ -80,7 +108,7 @@ function updateCart() {
     });
     const totalPrice = cart.reduce((total, product) => total + product.price, 0);
     document.getElementById('total-price').innerText = totalPrice;
-}
+} */
 
 // Eliminar producto del carrito
 function removeFromCart(index) {
@@ -104,14 +132,15 @@ function loadCart() {
 }
 
 // Finalizar compra
+
 function finalizePurchase() {
     if (cart.length > 0) {
-        alert(`Compra finalizada. Total: $${document.getElementById('total-price').innerText}`);
+        const totalPrice = document.getElementById('total-price').innerText;
+        document.getElementById('finalize-modal-body').innerHTML = `Compra finalizada. Total: $${totalPrice}`;
+        $('#finalizeModal').modal('show');
         cart = [];
         updateCart();
         saveCart();
-    } else {
-        alert('El carrito está vacío.');
     }
 }
 
