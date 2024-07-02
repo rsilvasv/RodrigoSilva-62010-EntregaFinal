@@ -86,7 +86,7 @@ function updateCart() {
         const cartItem = document.createElement('div');
         cartItem.className = 'mb-2';
         cartItem.innerHTML = `
-            <div>${product.name} - $${product.price} <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Eliminar</button></div>
+            <div>${product.name} - $${product.price} <button class="btn btn-danger btn-sm btn-remove" onclick="removeFromCart(${index})">Eliminar</button></div>
         `;
         cartList.appendChild(cartItem);
     });
@@ -94,21 +94,6 @@ function updateCart() {
     document.getElementById('total-price').innerText = totalPrice;
 }
 
-/* 
-function updateCart() {
-    const cartList = document.getElementById('cart-list');
-    cartList.innerHTML = '';
-    cart.forEach((product, index) => {
-        const cartItem = document.createElement('div');
-        cartItem.className = 'mb-2';
-        cartItem.innerHTML = `
-            <div>${product.name} - $${product.price} <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">Eliminar</button></div>
-        `;
-        cartList.appendChild(cartItem);
-    });
-    const totalPrice = cart.reduce((total, product) => total + product.price, 0);
-    document.getElementById('total-price').innerText = totalPrice;
-} */
 
 // Eliminar producto del carrito
 function removeFromCart(index) {

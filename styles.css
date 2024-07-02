@@ -26,6 +26,11 @@ header img {
 
 }
 
+p {
+    color: #fefeff;
+    font-family: "Montserrat", sans-serif;
+}
+
 h1 {
     font-family: "Bebas Neue", sans-serif;
     color: #fefeff;
@@ -96,6 +101,22 @@ main h3 {
     text-align: center;
 }
 
+/* Estilos boton del carrito */
+.btn-remove {
+    background-color: #ff4d4d; /* Color de fondo */
+    border-color: #ff1a1a; /* Color del borde */
+    color: white; /* Color del texto */
+    margin-left: 1rem; /* Espaciado a la izquierda */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 0.3rem 0.6rem; /* Espaciado interno */
+    font-size: 0.9rem; /* Tamaño de la fuente */
+    transition: background-color 0.2s, border-color 0.2s; /* Transición para hover */
+}
+
+.btn-remove:hover {
+    background-color: #e60000; /* Color de fondo al pasar el mouse */
+    border-color: #cc0000; /* Color del borde al pasar el mouse */
+}
 
 
 /* Estilos para los botones de las cards */
