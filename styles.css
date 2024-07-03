@@ -61,6 +61,7 @@ main h3 {
     bottom: -1em;
     font-size: 1.2em;
     color: gray;
+    font-family: "Karla", sans-serif !important;
 }
 
 
@@ -274,8 +275,4 @@ footer .redes img {
     text-align: justify;
 }
 
-.test {
-    width: 30vw;
-    height: auto;
-    justify-content: center;
-}
+    

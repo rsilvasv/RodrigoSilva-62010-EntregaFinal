@@ -47,7 +47,7 @@ function showProductDetails(productId) {
     // Actualizar contenido del modal
     modalTitle.textContent = product.name;
     modalBody.innerHTML = `
-        <img src="${product.image}" class="test" alt="${product.name}">
+        <img src="${product.image}" class="img-fluid mb-3" alt="${product.name}">
         <p class="modal-detalle">${product.description}</p>
         <p><strong>Precio: $${product.price}</strong></p>
     `;
