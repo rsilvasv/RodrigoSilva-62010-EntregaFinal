@@ -24,7 +24,7 @@ function displayProducts() {
                 <img src="${product.image}" class="card-img-top" alt="${product.name}">
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
-                    <p class="card-text">$${product.price}</p>
+                    <p class="card-text">${formatCurrency(product.price)}</p>
                     <div class="button-container">
                         <button class="btn btn-primary" onclick="addToCart(${product.id})">Agregar</button>
                         <button class="btn btn-info" onclick="showProductDetails(${product.id})" data-toggle="modal" data-target="#productModal">Información</button>
@@ -35,6 +35,16 @@ function displayProducts() {
         productList.appendChild(productDiv);
     });
 }
+
+
+function formatCurrency(amount) {
+    return amount.toLocaleString('es-AR', {
+        style: 'currency',
+        currency: 'ARS',
+        minimumFractionDigits: 2
+    });
+}
+
 
 // Mostrar detalles del producto en el modal de Bootstrap
 function showProductDetails(productId) {
@@ -47,9 +57,9 @@ function showProductDetails(productId) {
     // Actualizar contenido del modal
     modalTitle.textContent = product.name;
     modalBody.innerHTML = `
-        <img src="${product.image}" class="img-fluid mb-3" alt="${product.name}">
+        <img src="${product.image}" class="img-fluid mb-3F" alt="${product.name}">
         <p class="modal-detalle">${product.description}</p>
-        <p><strong>Precio: $${product.price}</strong></p>
+        <p><strong>Precio: ${formatCurrency(product.price)}</strong></p>
     `;
     
     // Mostrar el modal
@@ -65,6 +75,8 @@ function addToCart(productId) {
     updateCart();
     saveCart(); // Guardar automáticamente el carrito
 }
+
+
 
 // Actualizar carrito
 
@@ -86,12 +98,12 @@ function updateCart() {
         const cartItem = document.createElement('div');
         cartItem.className = 'mb-2';
         cartItem.innerHTML = `
-            <div>${product.name} - $${product.price} <button class="btn btn-danger btn-sm btn-remove" onclick="removeFromCart(${index})">Eliminar</button></div>
+            <div class="test"><div>${product.name} - ${formatCurrency(product.price)}</div> <div><button class="btn btn-danger btn-sm btn-remove" onclick="removeFromCart(${index})">Eliminar</button></div></div>
         `;
         cartList.appendChild(cartItem);
     });
     const totalPrice = cart.reduce((total, product) => total + product.price, 0);
-    document.getElementById('total-price').innerText = totalPrice;
+    document.getElementById('total-price').innerText = formatCurrency(totalPrice);
 }
 
 
@@ -107,6 +119,7 @@ function saveCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
+
 // Cargar carrito desde localStorage
 function loadCart() {
     const savedCart = localStorage.getItem('cart');
@@ -121,13 +134,33 @@ function loadCart() {
 function finalizePurchase() {
     if (cart.length > 0) {
         const totalPrice = document.getElementById('total-price').innerText;
-        document.getElementById('finalize-modal-body').innerHTML = `¡Compra realizada con éxito! El monto total es: $${totalPrice}`;
+        document.getElementById('finalize-modal-body').innerHTML = `¡Compra realizada con éxito! El monto total es: ${totalPrice}`;
         $('#finalizeModal').modal('show');
         cart = [];
         updateCart();
         saveCart();
     }
 }
+
+//Thank you bro :D
+document.addEventListener('DOMContentLoaded', () => {
+    const thankYouMessage = document.getElementById('thank-you-message');
+    const footer = document.getElementById('footer');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                thankYouMessage.style.display = 'block';
+
+                setTimeout(() => {
+                    thankYouMessage.style.display = 'none';
+                }, 3000);
+            }
+        });
+    });
+
+    observer.observe(footer);
+});
 
 // Inicializar aplicación
 function initApp() {

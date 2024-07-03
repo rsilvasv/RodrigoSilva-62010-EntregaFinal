@@ -49,7 +49,7 @@
                         <div id="cart-list">
                             <!-- Aquí se inyectarán los productos del carrito -->
                         </div>
-                        <p>Total: $<span id="total-price">0</span></p>
+                        <p>Total: <span id="total-price">0</span></p>
                         <p id="empty-cart-message" class="text-muted">El carrito está vacío.</p>
                         <button id="finalize-purchase-btn" class="btn btn-primary" onclick="finalizePurchase()">Finalizar Compra</button>
                     </div>
@@ -98,8 +98,13 @@
         </div>
     </div>
 
+    <!-- Contenedor para el mensaje de agradecimiento -->
+    <div id="thank-you-message" class="thank-you-message">
+        ¡Gracias por visitar nuestra página!
+    </div>
 
-    <footer class="bg-dark">  
+
+    <footer class="bg-dark" id="footer">  
         <!-- Redes sociales -->
         <a class="redes" href="https://www.instagram.com/cultivourbanourquiza/" target="_blank">
           <img src="images/instagram.png" alt="Instagram">
