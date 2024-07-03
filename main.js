@@ -47,8 +47,8 @@ function showProductDetails(productId) {
     // Actualizar contenido del modal
     modalTitle.textContent = product.name;
     modalBody.innerHTML = `
-        <img src="${product.image}" class="img-fluid mb-3" alt="${product.name}">
-        <p>${product.description}</p>
+        <img src="${product.image}" class="test" alt="${product.name}">
+        <p class="modal-detalle">${product.description}</p>
         <p><strong>Precio: $${product.price}</strong></p>
     `;
     
@@ -121,7 +121,7 @@ function loadCart() {
 function finalizePurchase() {
     if (cart.length > 0) {
         const totalPrice = document.getElementById('total-price').innerText;
-        document.getElementById('finalize-modal-body').innerHTML = `Compra finalizada. Total: $${totalPrice}`;
+        document.getElementById('finalize-modal-body').innerHTML = `¡Compra realizada con éxito! El monto total es: $${totalPrice}`;
         $('#finalizeModal').modal('show');
         cart = [];
         updateCart();

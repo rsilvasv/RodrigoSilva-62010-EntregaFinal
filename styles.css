@@ -267,3 +267,15 @@ footer .redes img {
 .close:hover {
     color: #000;
 }
+
+.modal-detalle {
+    color: #222427;
+    font-weight: 400;
+    text-align: justify;
+}
+
+.test {
+    width: 30vw;
+    height: auto;
+    justify-content: center;
+}
