@@ -8,7 +8,6 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-
     <!-- Nuevas fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
@@ -16,48 +15,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <!-- Icono de pestaña -->
     <link rel="shortcut icon" href="images/logo-pestaña.jpg" type="image/x-icon">
-
 </head>
 <body>
-    <div class="containter-general">
-        <header class="my-4">
-            <div class="contanier-logo">
-                <img src="images/logoShop-cu.png" alt="LogoShop">
-            </div>
-        </header>
+    <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="openCart">
+                        <img src="images/cart-shopping-solid.svg" alt="Carrito">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Panel de carrito de compras (Desplegable desde el margen izquierdo) -->
+    <div class="carritoFisico" id="carritoPanel">
+        <div class="carrito-header">
+            <h2>Carrito de Compras</h2>
+            <button id="closeCart" class="btn btn-danger">Cerrar</button>
+        </div>
+        <div id="cart-list"></div>
+        <p>Total: <span id="total-price">0</span></p>
+        <p id="empty-cart-message" class="text-muted">El carrito está vacío.</p>
+        <button id="finalize-purchase-btn" class="btn btn-primary btn-block" onclick="finalizePurchase()">Finalizar Compra</button>
+    </div>
+
+    <div class="container-general">
         <main>
             <div class="container-main">
-                <div class="container-title"> 
+                <div class="logo-cultivo">
+                    <img src="images/logoShop-cu.png" alt="LogoShop" class="logo-imagen">
+                </div>
+                <div class="container-title">
                     <h1 class="text-center">Cultivo Urbano Urquiza</h1>
                     <h2 class="subtitle">Productos de calidad para tu cultivo</h2>
                 </div>
                 <div id="product-details" class="mt-4"></div>
                 <div class="row">
                     <!-- Productos -->
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <h3 class="main-title">Productos</h3>
                         <div id="product-list" class="row">
                             <!-- Aquí se inyectarán los productos -->
                         </div>
                     </div>
-                    <!-- Carrito de Compras -->
-                    <div class="col-md-4">
-                        <h3 class="main-title">Carrito de Compras</h3>
-                        <div id="cart-list">
-                            <!-- Aquí se inyectarán los productos del carrito -->
-                        </div>
-                        <p>Total: <span id="total-price">0</span></p>
-                        <p id="empty-cart-message" class="text-muted">El carrito está vacío.</p>
-                        <button id="finalize-purchase-btn" class="btn btn-primary" onclick="finalizePurchase()">Finalizar Compra</button>
-                    </div>
                 </div>
             </div>
         </main>
     </div>
-
+    
     <!-- Modal detalles del producto-->
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -72,12 +86,12 @@
                     <div class="bodyrender" id="body-render"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">Cerrar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
     </div>
-
+    
     <!-- Modal para finalizar compra -->
     <div class="modal fade" id="finalizeModal" tabindex="-1" aria-labelledby="finalizeModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -97,18 +111,17 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Contenedor para el mensaje de agradecimiento -->
     <div id="thank-you-message" class="thank-you-message">
         ¡Gracias por visitar nuestra página!
     </div>
-
-
-    <footer class="bg-dark" id="footer">  
+    
+    <footer class="bg-dark" id="footer">
         <!-- Redes sociales -->
         <a class="redes" href="https://www.instagram.com/cultivourbanourquiza/" target="_blank">
-          <img src="images/instagram.png" alt="Instagram">
-          Instagram
+            <img src="images/instagram.png" alt="Instagram">
+            Instagram
         </a>
         <a class="redes" href="https://www.facebook.com/cultivourbanourquiza/?locale=es_LA" target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
@@ -119,14 +132,22 @@
         <!-- Copyright -->
         <p class="redes">Copyright © 2024</p>
     </footer>
-
+    
     <!-- Bootstrap JS y jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-
     <!-- Custom JS -->
     <script src="main.js"></script>
-    
-
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Custom JS for Cart -->
+    <script>
+        document.getElementById('openCart').addEventListener('click', function() {
+            document.getElementById('carritoPanel').classList.add('active');
+        });
+        document.getElementById('closeCart').addEventListener('click', function() {
+            document.getElementById('carritoPanel').classList.remove('active');
+        });
+    </script>
 </body>
 </html>

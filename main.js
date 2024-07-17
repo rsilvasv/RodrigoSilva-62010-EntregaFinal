@@ -1,4 +1,3 @@
-
 // Productos disponibles
 const products = [
     { id: 1, name: 'BioBizz', price: 1800, image: 'images/biobizz-light-mix.png', description: 'Light-Mix tiene como ingredientes principales turba, musgo de sphagnum y perlita. Mezclados juntos, estos componentes proporcionan un drenaje óptimo, lo cual es esencial para su uso con sistemas de riego automáticos.' },
@@ -9,8 +8,54 @@ const products = [
     { id: 6, name: 'Santa Planta', price: 5000, image: 'images/santaplanta.png', description: 'La maceta geotextil Santa Planta ofrece una solución eficiente para el cultivo de plantas. Fabricada con material geotextil, proporciona un excelente drenaje y aireación para el desarrollo saludable de las raíces.' }
 ];
 
-// Carrito de compras
-let cart = [];
+// Clase Carrito de Compras
+class CarritoDeCompras {
+    constructor() {
+        this.articulos = JSON.parse(localStorage.getItem('carrito')) || [];
+    }
+
+    agregarProducto(producto) {
+        const productoExistente = this.articulos.find(prod => prod.id === producto.id);
+        if (productoExistente) {
+            productoExistente.quantity++;
+        } else {
+            producto.quantity = 1;
+            this.articulos.push(producto);
+        }
+        this.guardarCarrito();
+    }
+
+    cambiarCantidad(id, cantidad) {
+        const producto = this.articulos.find(prod => prod.id === id);
+        if (producto) {
+            producto.quantity += cantidad;
+            if (producto.quantity <= 0) {
+                this.eliminarProducto(id);
+            }
+            this.guardarCarrito();
+        }
+    }
+
+    eliminarProducto(id) {
+        this.articulos = this.articulos.filter(prod => prod.id !== id);
+        this.guardarCarrito();
+    }
+
+    calcularTotal() {
+        return this.articulos.reduce((total, producto) => total + producto.price * producto.quantity, 0);
+    }
+
+    guardarCarrito() {
+        localStorage.setItem('carrito', JSON.stringify(this.articulos));
+    }
+
+    limpiarCarrito() {
+        localStorage.removeItem('carrito');
+        this.articulos = [];
+    }
+}
+
+const miCarrito = new CarritoDeCompras();
 
 // Mostrar productos
 function displayProducts() {
@@ -36,7 +81,7 @@ function displayProducts() {
     });
 }
 
-
+// Función para formatear currency
 function formatCurrency(amount) {
     return amount.toLocaleString('es-AR', {
         style: 'currency',
@@ -45,48 +90,36 @@ function formatCurrency(amount) {
     });
 }
 
-
 // Mostrar detalles del producto en el modal de Bootstrap
 function showProductDetails(productId) {
     const product = products.find(p => p.id === productId);
-    
-    // Obtener elementos del modal
     const modalTitle = document.getElementById('productModalLabel');
     const modalBody = document.getElementById('body-render');
-    
-    // Actualizar contenido del modal
+
     modalTitle.textContent = product.name;
     modalBody.innerHTML = `
-        <img src="${product.image}" class="img-fluid mb-3F" alt="${product.name}">
+        <img src="${product.image}" class="img-fluid mb-3" alt="${product.name}">
         <p class="modal-detalle">${product.description}</p>
         <p><strong>Precio: ${formatCurrency(product.price)}</strong></p>
     `;
-    
-    // Mostrar el modal
     $('#productModal').modal('show');
 }
-
-
 
 // Agregar producto al carrito
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
-    cart.push(product);
+    miCarrito.agregarProducto(product);
     updateCart();
-    saveCart(); // Guardar automáticamente el carrito
 }
 
-
-
 // Actualizar carrito
-
 function updateCart() {
     const cartList = document.getElementById('cart-list');
     const emptyCartMessage = document.getElementById('empty-cart-message');
     const finalizePurchaseBtn = document.getElementById('finalize-purchase-btn');
 
     cartList.innerHTML = '';
-    if (cart.length === 0) {
+    if (miCarrito.articulos.length === 0) {
         emptyCartMessage.style.display = 'block';
         finalizePurchaseBtn.style.display = 'none';
     } else {
@@ -94,78 +127,53 @@ function updateCart() {
         finalizePurchaseBtn.style.display = 'block';
     }
 
-    cart.forEach((product, index) => {
+    miCarrito.articulos.forEach(product => {
         const cartItem = document.createElement('div');
         cartItem.className = 'mb-2';
         cartItem.innerHTML = `
-            <div class="test"><div>${product.name} - ${formatCurrency(product.price)}</div> <div><button class="btn btn-danger btn-sm btn-remove" onclick="removeFromCart(${index})">Eliminar</button></div></div>
+            <div class="test">
+                <div>${product.name} - ${formatCurrency(product.price)} x ${product.quantity}</div>
+                <div>
+                    <button class="btn btn-secondary btn-sm btn-quantity" onclick="changeQuantity(${product.id}, -1)">-</button>
+                    <button class="btn btn-secondary btn-sm btn-quantity" onclick="changeQuantity(${product.id}, 1)">+</button>
+                    <button class="btn btn-danger btn-sm btn-remove" onclick="removeFromCart(${product.id})">Eliminar</button>
+                </div>
+            </div>
         `;
         cartList.appendChild(cartItem);
     });
-    const totalPrice = cart.reduce((total, product) => total + product.price, 0);
+
+    const totalPrice = miCarrito.calcularTotal();
     document.getElementById('total-price').innerText = formatCurrency(totalPrice);
 }
 
+// Cambiar cantidad de producto en el carrito
+function changeQuantity(productId, amount) {
+    miCarrito.cambiarCantidad(productId, amount);
+    updateCart();
+}
 
 // Eliminar producto del carrito
-function removeFromCart(index) {
-    cart.splice(index, 1);
+function removeFromCart(productId) {
+    miCarrito.eliminarProducto(productId);
     updateCart();
-    saveCart(); // Guardar automáticamente el carrito
-}
-
-// Guardar carrito en localStorage
-function saveCart() {
-    localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-
-// Cargar carrito desde localStorage
-function loadCart() {
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
-        updateCart();
-    }
 }
 
 // Finalizar compra
-
 function finalizePurchase() {
-    if (cart.length > 0) {
+    if (miCarrito.articulos.length > 0) {
         const totalPrice = document.getElementById('total-price').innerText;
         document.getElementById('finalize-modal-body').innerHTML = `¡Compra realizada con éxito! El monto total es: ${totalPrice}`;
         $('#finalizeModal').modal('show');
-        cart = [];
+        miCarrito.limpiarCarrito();
         updateCart();
-        saveCart();
     }
 }
-
-//Thank you bro :D
-document.addEventListener('DOMContentLoaded', () => {
-    const thankYouMessage = document.getElementById('thank-you-message');
-    const footer = document.getElementById('footer');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                thankYouMessage.style.display = 'block';
-
-                setTimeout(() => {
-                    thankYouMessage.style.display = 'none';
-                }, 3000);
-            }
-        });
-    });
-
-    observer.observe(footer);
-});
 
 // Inicializar aplicación
 function initApp() {
     displayProducts();
-    loadCart();
+    updateCart();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

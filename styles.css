@@ -20,11 +20,13 @@ header {
     margin: 5rem;
 }
 
-header img {
-    height: 100px;
-    width: 300px;
-
+.logo-imagen {
+    width: 150px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    height: 100%; /* Mantiene la proporción de la imagen */
+    float: left; /* Alinea la imagen a la izquierda */
+    margin-right: 10px; /* Espacio a la derecha de la imagen */
 }
+
 
 p {
     color: #fefeff;
@@ -66,8 +68,10 @@ main h3 {
 
 
 
+/* NEW STYLES */
 
-/* Estilos para el carrito  */
+
+/* Estilos para el carrito de compras */
 #cart-list {
     padding: 1em;
     border-radius: 10px;
@@ -76,7 +80,6 @@ main h3 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: #fefeff;
     margin-bottom: 1rem;
-    
 }
 
 #cart-list div {
@@ -93,12 +96,12 @@ main h3 {
     margin-bottom: 0;
 }
 
-.test{
+.test {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
-    
+
 #total-price {
     font-weight: bold;
     font-size: 1.2em;
@@ -110,6 +113,81 @@ main h3 {
     font-family: "Karla", sans-serif;
     font-weight: 600;
 }
+
+/* Estilos del carrito físico */
+.carritoFisico {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    color: #fff;
+    width: 300px;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: 1000;
+}
+
+.carritoFisico.active {
+    transform: translateX(0);
+}
+
+.carritoFisico h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px 0;
+}
+
+#borrar {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Estilos para el icono del carrito */
+.carrito {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ffffff;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carrito img {
+    width: 60px;
+    height: 60px;
+}
+
+/* Estilos para los productos en el carrito */
+.prodEnCarrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #fff;
+}
+
+.precioYCantidad {
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cantidad {
+    color: #000;
+}
+
+
 
 /* Estilos boton del carrito */
 .btn-remove {
@@ -126,7 +204,7 @@ main h3 {
 .btn-remove:hover {
     background-color: #e60000; /* Color de fondo al pasar el mouse */
     border-color: #cc0000; /* Color del borde al pasar el mouse */
-}
+} */
 
 
 /* Estilos para los botones de las cards */
@@ -298,3 +376,36 @@ footer .redes img {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030; /* Asegura que esté por encima de otros elementos */
+    background-color: #D2D1D5;
+}
+
+.navbar-brand img {
+    height: 80px;
+    margin-left: 1rem;
+}
+
+
+.nav-item .nav-link img {
+    height: 24px;
+    
+}
+
+/* Dropdown Carrito */
+.dropdown-menu {
+    max-width: 300px;
+    min-width: 300px;
+}
+
+.dropdown-menu #cart-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+
