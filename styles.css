@@ -20,11 +20,22 @@ header {
     margin: 5rem;
 }
 
+
+/* Logo CultivoUrbano */
+
 .logo-imagen {
-    width: 150px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    width: 200px; /* Ajusta el tamaño de la imagen según tus necesidades */
     height: 100%; /* Mantiene la proporción de la imagen */
     float: left; /* Alinea la imagen a la izquierda */
     margin-right: 10px; /* Espacio a la derecha de la imagen */
+}
+
+/* Logo SantaPlanta */
+.logo-santaplanta {
+    width: 150px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    height: 100%; /* Mantiene la proporción de la imagen */
+    float: right; /* Alinea la imagen a la izquierda */
+    margin-left: 10px; /* Espacio a la derecha de la imagen */
 }
 
 
@@ -77,6 +88,7 @@ main h3 {
     border-radius: 10px;
     max-height: 400px;
     overflow-y: auto;
+    overflow-x: hidden; /* Ocultar scroll horizontal */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: #fefeff;
     margin-bottom: 1rem;
@@ -88,12 +100,9 @@ main h3 {
     align-items: center;
     margin-bottom: 0.5rem;
     padding: 0.5rem;
-    background-color: #3d4145;
-    border-radius: 5px;
-}
-
-#cart-list div:last-child {
-    margin-bottom: 0;
+    margin-top: 1rem;
+    width: 100%; /* Asegurar que el div hijo ocupe el ancho completo del contenedor */
+    box-sizing: border-box; /* Incluir padding y border en el ancho total */
 }
 
 .test {
@@ -121,11 +130,14 @@ main h3 {
     left: 0;
     background-color: #000;
     color: #fff;
-    width: 300px;
+    width: 400px;
     height: 100%;
     transform: translateX(-100%);
     transition: transform 0.3s;
     z-index: 1000;
+    margin-top: 3rem;
+    box-sizing: border-box; /* Asegurar que padding y border se incluyan en el tamaño total */
+    overflow-x: hidden; /* Ocultar scroll horizontal */
 }
 
 .carritoFisico.active {
@@ -136,6 +148,11 @@ main h3 {
     text-align: center;
     font-size: 2rem;
     margin: 20px 0;
+    background-color: #673536;
+}
+
+.total-carrito {
+    margin-left: 2rem;
 }
 
 #borrar {
@@ -199,12 +216,38 @@ main h3 {
     padding: 0.3rem 0.6rem; /* Espaciado interno */
     font-size: 0.9rem; /* Tamaño de la fuente */
     transition: background-color 0.2s, border-color 0.2s; /* Transición para hover */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .btn-remove:hover {
     background-color: #e60000; /* Color de fondo al pasar el mouse */
     border-color: #cc0000; /* Color del borde al pasar el mouse */
-} */
+}
+
+/* Boton finalizar compra */
+
+#finalize-purchase-btn {
+    margin-left: 2rem;
+}
+
+/* Boton cerrar carrito desplegable */
+
+#closeCart {
+    position: absolute; /* Posicionar el botón de forma absoluta dentro del contenedor */
+    top: 3.7rem; /* Ajustar según el espacio deseado desde la parte superior */
+    right: 1rem; /* Ajustar según el espacio deseado desde el borde derecho */
+    font-size: small;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;   
+}
+
+#closeCart:hover{
+    text-decoration: underline; /* Agrega subrayado */
+    text-decoration-color: white; /* Cambia el color del subrayado a blanco */
+}
 
 
 /* Estilos para los botones de las cards */
@@ -281,6 +324,8 @@ footer .redes img {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
+    width: 90%;
+    margin: auto;
 }
 
 .card:hover {
@@ -382,7 +427,7 @@ footer .redes img {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1030; /* Asegura que esté por encima de otros elementos */
+    z-index: 1100; /* Asegura que esté por encima de otros elementos */
     background-color: #D2D1D5;
 }
 

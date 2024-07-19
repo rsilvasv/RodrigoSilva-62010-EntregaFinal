@@ -40,19 +40,20 @@
     <div class="carritoFisico" id="carritoPanel">
         <div class="carrito-header">
             <h2>Carrito de Compras</h2>
-            <button id="closeCart" class="btn btn-danger">Cerrar</button>
+            <button id="closeCart" class="btn">Cerrar</button>
         </div>
         <div id="cart-list"></div>
-        <p>Total: <span id="total-price">0</span></p>
+        <p class="total-carrito">Total: <span id="total-price">0</span></p>
         <p id="empty-cart-message" class="text-muted">El carrito está vacío.</p>
-        <button id="finalize-purchase-btn" class="btn btn-primary btn-block" onclick="finalizePurchase()">Finalizar Compra</button>
+        <button id="finalize-purchase-btn" class="btn btn-primary" onclick="finalizePurchase()">Finalizar Compra</button>
     </div>
 
     <div class="container-general">
         <main>
             <div class="container-main">
                 <div class="logo-cultivo">
-                    <img src="images/logoShop-cu.png" alt="LogoShop" class="logo-imagen">
+                    <img src="images/logoShop-cu.png" alt="Logo cultivo Urbano" class="logo-imagen">
+                    <img src="images/logo-santaplanta.png" alt="Logo santaplanta" class="logo-santaplanta">
                 </div>
                 <div class="container-title">
                     <h1 class="text-center">Cultivo Urbano Urquiza</h1>
@@ -140,14 +141,5 @@
     <script src="main.js"></script>
     <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Custom JS for Cart -->
-    <script>
-        document.getElementById('openCart').addEventListener('click', function() {
-            document.getElementById('carritoPanel').classList.add('active');
-        });
-        document.getElementById('closeCart').addEventListener('click', function() {
-            document.getElementById('carritoPanel').classList.remove('active');
-        });
-    </script>
 </body>
 </html>
