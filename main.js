@@ -101,23 +101,27 @@ function formatCurrency(amount) {
     });
 }
 
-// Mostrar detalles del producto en el modal de Bootstrap
+// Mostrar detalles del producto con Sweet Alert
 function showProductDetails(productId) {
     const product = products.find(p => p.id === productId);
-    const modalTitle = document.getElementById('productModalLabel');
-    const modalBody = document.getElementById('body-render');
-
-    modalTitle.textContent = product.name;
-    modalBody.innerHTML = `
-        <img src="${product.image}" class="img-fluid mb-3" alt="${product.name}">
-        <p class="modal-detalle">${product.description}</p>
-        <p><strong>Precio: ${formatCurrency(product.price)}</strong></p>
-    `;
-    $('#productModal').modal('show');
+    
+    Swal.fire({
+        title: product.name,
+        html: `
+            <img src="${product.image}" class="img-fluid mb-3" alt="${product.name}">
+            <p class="modal-detalle">${product.description}</p>
+            <p><strong>Precio: ${formatCurrency(product.price)}</strong></p>
+        `,
+        showCloseButton: true,
+        focusConfirm: false,
+        confirmButtonText: 'Cerrar',
+        customClass: {
+            popup: 'animated fadeInDown'
+        }
+    });
 }
 
 // Agregar producto al carrito
-
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     miCarrito.agregarProducto(product);
@@ -134,8 +138,14 @@ function addToCart(productId) {
     });
 
     updateCart();
+    updateCartCount();
 }
 
+// Actualizar contador del carrito
+function updateCartCount() {
+    const cartCount = miCarrito.articulos.reduce((total, product) => total + product.quantity, 0);
+    document.getElementById('cart-count').textContent = cartCount;
+}
 
 // Actualizar carrito
 function updateCart() {
@@ -188,10 +198,20 @@ function removeFromCart(productId) {
 function finalizePurchase() {
     if (miCarrito.articulos.length > 0) {
         const totalPrice = document.getElementById('total-price').innerText;
-        document.getElementById('finalize-modal-body').innerHTML = `¡Compra realizada con éxito! El monto total es: ${totalPrice}`;
-        $('#finalizeModal').modal('show');
-        miCarrito.limpiarCarrito();
-        updateCart();
+        Swal.fire({
+            title: '¡Compra realizada con éxito!',
+            html: `<p>El monto total es: <strong>${totalPrice}</strong></p>`,
+            icon: 'success',
+            showConfirmButton: true,
+            confirmButtonText: 'Cerrar',
+            customClass: {
+                popup: 'animated fadeInDown'
+            }
+        }).then(() => {
+            miCarrito.limpiarCarrito();
+            updateCart();
+            updateCartCount();
+        });
     }
 }
 
@@ -199,6 +219,7 @@ function finalizePurchase() {
 function initApp() {
     displayProducts();
     updateCart();
+    updateCartCount();
 }
 
 //Integracion del data.json
