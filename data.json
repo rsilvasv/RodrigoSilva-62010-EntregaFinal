@@ -2,6 +2,7 @@
     {
         "id": 1,
         "name": "BioBizz",
+        "category": "Sustratos",
         "price": 1800,
         "image": "images/biobizz-light-mix.png",
         "description": "Light-Mix tiene como ingredientes principales turba, musgo de sphagnum y perlita. Mezclados juntos, estos componentes proporcionan un drenaje óptimo, lo cual es esencial para su uso con sistemas de riego automáticos."
@@ -9,6 +10,7 @@
     {
         "id": 2,
         "name": "Champi Compost",
+        "category": "Sustratos",
         "price": 1300,
         "image": "images/champi-compost.png",
         "description": "El ChampiCompost GF es el sustrato que procede del cultivo del champiñón una vez recogida la producción. El compost post cultivo contiene gran variedad de materia orgánica y nutrientes útiles para su aplicación en la agricultura."
@@ -16,13 +18,15 @@
     {
         "id": 3,
         "name": "Grotek",
+        "category": "Fertilizantes",
         "price": 20000,
         "image": "images/grotek.png",
         "description": "Blossom Blaster Pro de Grotek es un potente estimulador para la primera etapa de floración de las plantas de marihuana. Aporta una dosis exacta de Hierro, fosforo, nitrógeno, etc que harán que la planta desarrolle y aumente el número de brotes florales, aumentando así posteriormente la producción."
     },
     {
         "id": 4,
-        "name": "Pot",
+        "name": "Pot Vege",
+        "category": "Fertilizantes",
         "price": 10000,
         "image": "images/pot-vege.png",
         "description": "Contiene los mejores componentes orgánicos y minerales en un solo producto. Éste hace que la planta se concentre especialmente en el desarrollo de ramas y brotes de gran robutez y vitalidad."
@@ -30,6 +34,7 @@
     {
         "id": 5,
         "name": "RootHouse",
+        "category": "Macetas",
         "price": 1800,
         "image": "images/roothouse.png",
         "description": "Las macetas Roots House cuentan con guías internas que evitan la estrangulación del sustrato y promueven el crecimiento explosivo de raíces. Su diseño incluye pequeñas aberturas que estimulan una poda aérea natural, mejorando el drenaje sin necesidad de leca."
@@ -37,6 +42,7 @@
     {
         "id": 6,
         "name": "Santa Planta",
+        "category": "Macetas",
         "price": 5000,
         "image": "images/santaplanta.png",
         "description": "La maceta geotextil Santa Planta ofrece una solución eficiente para el cultivo de plantas. Fabricada con material geotextil, proporciona un excelente drenaje y aireación para el desarrollo saludable de las raíces."
@@ -44,6 +50,7 @@
     {
         "id": 7,
         "name": "Home Box Q100 (100 X 100 X 200CM)",
+        "category": "Carpas",
         "price": 55000,
         "image": "images/homeboxq100.png",
         "description": "TerrHOMEbox Ambient Q100 tiene un metro cuadrado de espacio de cultivo con una altura generosa de 2 metros, ideal para controlar mejor las temperaturas, cultivar plantas de mayor calibre o colgar todo el equipamiento que dará potencia a tus flores. También funciona a la perfección en cultivos hidropónicos."
@@ -51,6 +58,7 @@
     {
         "id": 8,
         "name": "HOMEBOX R 120 (120 X 90 X 180CM)",
+        "category": "Carpas",
         "price": 65000,
         "image": "images/homeboxr120.png",
         "description": "El ingenioso diseño del nuevo HOMEbox® Ambient R120 ofrece algo más de 1 m² de superficie de cultivo ¡pero en forma triangular! Estas proporciones son ideales para aprovechar todos los fotones de una lámpara de cultivo HID de 600 W instalada en un reflector rectangular."
@@ -58,6 +66,7 @@
     {
         "id": 9,
         "name": "HOMEBOX R 0800S (80 X 60 X 70CM)",
+        "category": "Carpas",
         "price": 30000,
         "image": "images/homeboxr0800.png",
         "description": "Super Soil El HOMEbox® Ambient R80S es ideal para generar docenas de esquejes y plántulas en los espacios más pequeños. Donde la altura del techo lo permita, puede ajustarse cómodamente sobre una carpa de cultivo existente, utilizando hábilmente el mismo sistema de ventilación, para que no se ocupe espacio extra en el piso."
@@ -65,6 +74,7 @@
     {
         "id": 10,
         "name": "SANTA PLANTA LED PARRILLA 500W 20XML42 85X85M",
+        "category": "Iluminacion",
         "price": 28000,
         "image": "images/led-parrilla-500w.png",
         "description": "La combinación de leds blancos fríos de 4000K y cálidos de 3000K aportan la mezcla perfecta de espectro en el azul y rojos para un óptimo desempeño vegetativo. Los rojos HyperRed aportan longitudes de onda de emisión específicos para la floración. Todo esto se traduce en ciclos más cortos, mejor desarrollo de floración y mejor rendimiento gr/w."
@@ -72,8 +82,137 @@
     {
         "id": 11,
         "name": "GROW TECH LED 300W V4 COB 80X80",
+        "category": "Iluminacion",
         "price": 11000,
         "image": "images/growtech-300w.png",
         "description": "La Línea Cob sirve para todo el ciclo de la planta desde la germinación, vegetación y floración. El color de su luz se ve violeta ya que emite radiación lumínica principalmente en la gama de los rojos y azules, su combinación da ese resultado. Cuenta con disipación activa con una turbina. Una vida útil de 20.000hs."
+    },
+    {
+        "id": 13,
+        "name": "Azteca Black Magic",
+        "category": "Fertilizantes",
+        "price": 30000,
+        "image": "images/azteka-blackmagic.png",
+        "description": "."
+    },
+    {
+        "id": 14,
+        "name": "Azteca Budha Juice",
+        "category": "Fertilizantes",
+        "price": 30000,
+        "image": "images/azteka-budha.png",
+        "description": "."
+    },
+    {
+        "id": 15,
+        "name": "Azteka Devil Juice",
+        "category": "Fertilizantes",
+        "price": 20000,
+        "image": "images/azteka-devil.png",
+        "description": "."
+    },
+    {
+        "id": 16,
+        "name": "Azteka Miracle",
+        "category": "Fertilizantes",
+        "price": 25000,
+        "image": "images/azteka-miracle.png",
+        "description": "."
+    },
+    {
+        "id": 17,
+        "name": "Azteka Monster Weed",
+        "category": "Fertilizantes",
+        "price": 25000,
+        "image": "images/azteka-monsterweed.png",
+        "description": "."
+    },
+    {
+        "id": 18,
+        "name": "Azteka Sea Magic",
+        "category": "Fertilizantes",
+        "price": 11000,
+        "image": "images/azteka-seamagic.png",
+        "description": "."
+    },
+    {
+        "id": 19,
+        "name": "Azteka Super Honey",
+        "category": "Fertilizantes",
+        "price": 11000,
+        "image": "images/azteka-superhoney.png",
+        "description": "."
+    },
+    {
+        "id": 20,
+        "name": "BLUE LAB MEDIDOR DE EC HUMEDAD Y TEMP MARCA METPULSE",
+        "category": "Herramientas",
+        "price": 19000,
+        "image": "images/bluelab-ec.png",
+        "description": "."
+    },
+    {
+        "id": 21,
+        "name": "BLUE LAB MONITOR GUARDIAN CONNECT",
+        "category": "Herramientas",
+        "price": 10000,
+        "image": "images/bluelab-monitor.png",
+        "description": "."
+    },
+    {
+        "id": 22,
+        "name": "BLUE LAB CONDUCTIMETRO PORTATIL CONPEN",
+        "category": "Herramientas",
+        "price": 11000,
+        "image": "images/bluelab-portatil.png",
+        "description": "."
+    },
+    {
+        "id": 23,
+        "name": "GARDEN PROACTIV 200MM/800M3",
+        "category": "Herramientas",
+        "price": 45000,
+        "image": "images/garden-proactiv.png",
+        "description": "."
+    },
+    {
+        "id": 24,
+        "name": "GARDEN PULVE DELUXE",
+        "category": "Herramientas",
+        "price": 1000,
+        "image": "images/garden-pulve.png",
+        "description": "."
+    },
+    {
+        "id": 25,
+        "name": "GARDEN PRODRY BASIC 90CM",
+        "category": "Herramientas",
+        "price": 16000,
+        "image": "images/gardenpro-dry.png",
+        "description": "."
+    },
+    {
+        "id": 26,
+        "name": "GRALF TERMOMETRO DIGITAL DE PANEL",
+        "category": "Herramientas",
+        "price": 11000,
+        "image": "images/gralf-termometro.png",
+        "description": "."
+    },
+    {
+        "id": 27,
+        "name": "GROWER THINGS FILTRO DE OLOR MAER M",
+        "category": "Herramientas",
+        "price": 35000,
+        "image": "images/grower-filtrom.png",
+        "description": "."
+    },
+    {
+        "id": 28,
+        "name": "GROWER THINGS FILTRO DE OLOR MAER XL",
+        "category": "Herramientas",
+        "price": 45000,
+        "image": "images/grower-filtroxl.png",
+        "description": "."
     }
 ]

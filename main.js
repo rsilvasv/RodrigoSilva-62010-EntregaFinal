@@ -5,6 +5,7 @@ async function fetchProducts() {
     try {
         const response = await fetch('data.json');
         products = await response.json();
+        displayProducts(products);
         initApp();
     } catch (error) {
         console.error('Error fetching products:', error);
@@ -62,10 +63,10 @@ class CarritoDeCompras {
 const miCarrito = new CarritoDeCompras();
 
 // Mostrar productos
-function displayProducts() {
+function displayProducts(productsToDisplay) {
     const productList = document.getElementById('product-list');
     productList.innerHTML = '';
-    products.forEach(product => {
+    productsToDisplay.forEach(product => {
         const productDiv = document.createElement('div');
         productDiv.className = 'col-md-4';
         productDiv.innerHTML = `
@@ -152,14 +153,17 @@ function updateCart() {
     const cartList = document.getElementById('cart-list');
     const emptyCartMessage = document.getElementById('empty-cart-message');
     const finalizePurchaseBtn = document.getElementById('finalize-purchase-btn');
+    const clearCartBtn = document.getElementById('clear-cart-btn');
 
     cartList.innerHTML = '';
     if (miCarrito.articulos.length === 0) {
         emptyCartMessage.style.display = 'block';
         finalizePurchaseBtn.style.display = 'none';
+        clearCartBtn.style.display = 'none'; // Ocultar el botón "Vaciar Carrito"
     } else {
         emptyCartMessage.style.display = 'none';
         finalizePurchaseBtn.style.display = 'block';
+        clearCartBtn.style.display = 'block'; // Mostrar el botón "Vaciar Carrito"
     }
 
     miCarrito.articulos.forEach(product => {
@@ -182,6 +186,12 @@ function updateCart() {
     document.getElementById('total-price').innerText = formatCurrency(totalPrice);
 }
 
+//Funcion para vaciar carrito
+function clearCart() {
+    miCarrito.articulos = []; // Vaciar el carrito
+    updateCart(); // Actualizar el carrito en la interfaz
+}
+
 // Cambiar cantidad de producto en el carrito
 function changeQuantity(productId, amount) {
     miCarrito.cambiarCantidad(productId, amount);
@@ -198,26 +208,67 @@ function removeFromCart(productId) {
 function finalizePurchase() {
     if (miCarrito.articulos.length > 0) {
         const totalPrice = document.getElementById('total-price').innerText;
-        Swal.fire({
-            title: '¡Compra realizada con éxito!',
-            html: `<p>El monto total es: <strong>${totalPrice}</strong></p>`,
-            icon: 'success',
-            showConfirmButton: true,
-            confirmButtonText: 'Cerrar',
-            customClass: {
-                popup: 'animated fadeInDown'
+
+        showUserForm(totalPrice).then((result) => {
+            if (result.isConfirmed) {
+                const { firstName, lastName, email } = result.value;
+                
+                // Aquí puedes procesar la información del usuario si es necesario
+                console.log('Usuario:', firstName, lastName, email);
+                
+                Swal.fire({
+                    title: '¡Compra realizada con éxito! !Gracias por elegirnos!',
+                    html: `<p>El monto total es: <strong>${totalPrice}</strong></p>`,
+                    icon: 'success',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Cerrar',
+                    customClass: {
+                        popup: 'animated fadeInDown'
+                    }
+                }).then(() => {
+                    miCarrito.limpiarCarrito();
+                    updateCart();
+                    updateCartCount();
+                });
             }
-        }).then(() => {
-            miCarrito.limpiarCarrito();
-            updateCart();
-            updateCartCount();
         });
     }
 }
 
+//Funcion para finalizar compra - formulario final
+function showUserForm(totalPrice) {
+    return Swal.fire({
+        title: 'Complete su información',
+        html: `
+            <input type="text" id="first-name" class="swal2-input" placeholder="Nombre">
+            <input type="text" id="last-name" class="swal2-input" placeholder="Apellido">
+            <input type="email" id="email" class="swal2-input" placeholder="Email">
+            <p>El monto total es: <strong>${totalPrice}</strong></p>
+        `,
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar',
+        customClass: {
+            popup: 'animated fadeInDown'
+        },
+        preConfirm: () => {
+            const firstName = Swal.getPopup().querySelector('#first-name').value;
+            const lastName = Swal.getPopup().querySelector('#last-name').value;
+            const email = Swal.getPopup().querySelector('#email').value;
+            
+            if (!firstName || !lastName || !email) {
+                Swal.showValidationMessage('Por favor, complete todos los campos');
+            }
+            
+            return { firstName, lastName, email };
+        }
+    });
+}
+
 // Inicializar aplicación
 function initApp() {
-    displayProducts();
+    displayProducts(products);
     updateCart();
     updateCartCount();
 }
@@ -226,3 +277,37 @@ function initApp() {
 document.addEventListener('DOMContentLoaded', fetchProducts);
 
 document.addEventListener('DOMContentLoaded', initApp);
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('category-filter').addEventListener('change', function() {
+        const selectedCategory = this.value;
+        filterProducts(selectedCategory);
+    });
+});
+
+let filteredGlobal = [];
+
+// Paso 1: Define el evento personalizado
+const filteredNotEmptyEvent = new CustomEvent('filteredNotEmpty');
+console.log(filteredNotEmptyEvent);
+// Paso 2: Modifica la función filterProducts para disparar el evento
+function filterProducts(category) {
+    let filteredProducts = products;
+    if (category !== 'all') {
+        filteredProducts = products.filter(product => product.category === category);
+        console.log(filteredProducts);
+    }
+    filteredGlobal = filteredProducts;
+    console.log(filteredGlobal);
+
+    // Dispara el evento si filteredGlobal no está vacío
+    if (filteredGlobal.length > 0) {
+        document.dispatchEvent(filteredNotEmptyEvent);
+        console.log(filteredNotEmptyEvent);
+    }
+}
+
+// Paso 3: Escucha el evento y ejecuta la función displayProducts
+document.addEventListener('filteredNotEmpty', function() {
+    displayProducts(filteredGlobal);
+});

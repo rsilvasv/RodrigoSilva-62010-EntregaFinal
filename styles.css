@@ -4,11 +4,6 @@ body {
     background-color: #222427;
 }
 
-header {
-    display: flex;
-    margin: 2rem;
-}
-
 .container {
     display: flex;
     flex-direction: column;
@@ -23,19 +18,30 @@ header {
 
 /* Logo CultivoUrbano */
 
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    margin-top: 3rem;
+}
+
+/* Estilos para contenedor de los logos */
+.logo-cultivo{
+    margin-left: 6rem;
+}
+
 .logo-imagen {
-    width: 200px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    width: 250px; /* Ajusta el tamaño de la imagen según tus necesidades */
     height: 100%; /* Mantiene la proporción de la imagen */
-    float: left; /* Alinea la imagen a la izquierda */
-    margin-right: 10px; /* Espacio a la derecha de la imagen */
+    justify-content:flex-start;
+    margin-left: 3rem;
 }
 
 /* Logo SantaPlanta */
 .logo-santaplanta {
-    width: 150px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    width: 200px; /* Ajusta el tamaño de la imagen según tus necesidades */
     height: 100%; /* Mantiene la proporción de la imagen */
-    float: right; /* Alinea la imagen a la izquierda */
-    margin-left: 10px; /* Espacio a la derecha de la imagen */
+    margin-right: 2rem;/* Espacio a la derecha de la imagen */
 }
 
 
@@ -49,15 +55,7 @@ h1 {
     color: #fefeff;
     font-size: 5rem;
     font-weight: 100;
-    margin-top: 0;
-}
-
-header h2 {
-    font-family: "Karla", sans-serif;
-    color: #fefeff;
-    font-size: 1rem;
-    text-align: center;
-    justify-content: center;
+    margin-right: 8rem;
 }
 
 main h3 {
@@ -70,7 +68,7 @@ main h3 {
 }
 
 .subtitle {
-    padding-left: 25rem;
+    
     bottom: -1em;
     font-size: 1.2em;
     color: gray;
@@ -82,7 +80,6 @@ main h3 {
 #cart-list {
     padding: 1em;
     border-radius: 10px;
-    max-height: 400px;
     overflow-y: auto;
     overflow-x: hidden; /* Ocultar scroll horizontal */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -141,7 +138,6 @@ main h3 {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #000;
     color: #fff;
     width: 400px;
     height: 100%;
@@ -150,6 +146,7 @@ main h3 {
     z-index: 1000;
     box-sizing: border-box; /* Asegurar que padding y border se incluyan en el tamaño total */
     overflow-x: hidden; /* Ocultar scroll horizontal */
+    background: url(images/fondo_body.png);
 }
 
 
@@ -173,6 +170,17 @@ main h3 {
     border: none;
     padding: 10px;
     cursor: pointer;
+}
+
+.cart-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+#finalize-purchase-btn, #clear-cart-btn {
+    flex: 1;
+    margin: 0 0.5rem;
 }
 
 /* Estilos para el icono del carrito */
@@ -328,6 +336,13 @@ footer .redes img {
 }
 
 
+/* Estilos para el input del filtro de categorias */
+
+.form-control {
+    width: auto;
+    height: auto;
+}
+
 
 /* Cards productos */
 
@@ -337,7 +352,7 @@ footer .redes img {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
     width: 90%;
-    margin: auto;
+    margin: 1rem;
 }
 
 .card:hover {
@@ -423,8 +438,8 @@ footer .redes img {
 .navbar {
     top: 0;
     width: 100%;
-    z-index: 1100; /* Asegura que esté por encima de otros elementos */
-    background-color: #D2D1D5;
+    z-index: 800; /* Asegura que esté por encima de otros elementos */
+    border-bottom: 2px solid rgba(46, 47, 54, 0.8); /* Ajusta el color y la opacidad a tu gusto */
 }
 
 .navbar-brand img {
@@ -432,10 +447,8 @@ footer .redes img {
     margin-left: 1rem;
 }
 
-
 .nav-item .nav-link img {
     height: 24px;
-    
 }
 
 /* Dropdown Carrito */
