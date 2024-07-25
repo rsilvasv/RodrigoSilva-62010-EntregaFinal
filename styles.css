@@ -63,12 +63,17 @@ main h3 {
     color: #fefeff;
 }
 
-.main-title{
-    margin: 2rem;
+/* Estilo para titulo "Productos" */
+/* .main-title{
+    margin-left: 2rem;
+} */
+
+.title-section{
+    margin-left: 2rem;
 }
 
+
 .subtitle {
-    
     bottom: -1em;
     font-size: 1.2em;
     color: gray;
@@ -77,6 +82,11 @@ main h3 {
 
 .filter-title{
     color: white;
+    font-size: medium;
+}
+
+.filter-container {
+    margin-left:2rem;
 }
 
 

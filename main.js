@@ -189,6 +189,7 @@ function updateCart() {
 //Funcion para vaciar carrito
 function clearCart() {
     miCarrito.articulos = []; // Vaciar el carrito
+    localStorage.removeItem('carrito');
     updateCart(); // Actualizar el carrito en la interfaz
 }
 
