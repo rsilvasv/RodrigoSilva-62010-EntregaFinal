@@ -205,6 +205,104 @@ function removeFromCart(productId) {
     updateCart();
 }
 
+
+// PROCESO DE COMPRA
+// Formulario de usuario con datos pre-completados
+function showUserForm(totalPrice) {
+    return Swal.fire({
+        title: 'Complete su información',
+        html: `
+            <div class="swal2-form-group">
+                <label for="swal-input1">Nombre:</label>
+                <input type="text" id="swal-input1" class="swal2-input small-input" placeholder="Ej. Raul" value="">
+            </div>
+            <div class="swal2-form-group">
+                <label for="swal-input2">Apellido:</label>
+                <input type="text" id="swal-input2" class="swal2-input small-input" placeholder="Ej. Gonzalez" value="">
+            </div>
+            <div class="swal2-form-group">
+                <label for="swal-input3">Email:</label>
+                <input type="email" id="swal-input3" class="swal2-input small-input" placeholder="email@gmail.com" value="">
+            </div>
+        `,
+        icon: 'info',
+        focusConfirm: false,
+        showCancelButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar',
+        customClass: {
+            popup: 'animated fadeInDown'
+        },
+        preConfirm: () => {
+            const firstName = document.getElementById('swal-input1').value;
+            const lastName = document.getElementById('swal-input2').value;
+            const email = document.getElementById('swal-input3').value;
+            if (!firstName || !lastName || !email) {
+                Swal.showValidationMessage('Por favor, completa todos los campos.');
+                return false;
+            }
+            return { firstName, lastName, email };
+        }
+    });
+}
+
+// Formulario de pago con datos pre-completados
+function showPaymentForm(totalPrice) {
+    return Swal.fire({
+        title: 'Elegir Modo de Pago',
+        html: `
+            <div class="swal2-form-group">
+                <label for="payment-method">Método de Pago:</label>
+                <select id="payment-method" class="swal2-input small-input">
+                    <option value="card">Tarjeta de Crédito/Débito</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+            </div>
+            <div id="payment-details" class="swal2-form-group">
+                <label for="card-number">Número de Tarjeta:</label>
+                <input type="text" id="card-number" class="swal2-input small-input" placeholder="Ej. 1234 5678 9012 3456" value="">
+            </div>
+            <div class="swal2-form-group">
+                <label for="card-expiry">Fecha de Expiración:</label>
+                <input type="text" id="card-expiry" class="swal2-input small-input" placeholder="MM/AA" value="">
+            </div>
+            <div class="swal2-form-group">
+                <label for="card-cvc">CVC:</label>
+                <input type="text" id="card-cvc" class="swal2-input small-input" placeholder="Ej.123" value="">
+            </div>
+            <p class="total-finalize">El monto total es: <strong>${totalPrice}</strong></p>
+        `,
+        icon: 'info',
+        focusConfirm: false,
+        showCancelButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar',
+        customClass: {
+            popup: 'animated fadeInDown'
+        },
+        preConfirm: () => {
+            const paymentMethod = document.getElementById('payment-method').value;
+            let paymentDetails = {};
+            if (paymentMethod === 'card') {
+                const cardNumber = document.getElementById('card-number').value;
+                const cardExpiry = document.getElementById('card-expiry').value;
+                const cardCvc = document.getElementById('card-cvc').value;
+                if (!cardNumber || !cardExpiry || !cardCvc) {
+                    Swal.showValidationMessage('Por favor, completa todos los campos de la tarjeta.');
+                    return false;
+                }
+                paymentDetails = { cardNumber, cardExpiry, cardCvc };
+            } else {
+                // Simulación de datos de PayPal
+                paymentDetails = { paypalEmail: 'usuario@example.com' };
+            }
+            return { paymentMethod, paymentDetails };
+        }
+    });
+}
+
 // Finalizar compra
 function finalizePurchase() {
     if (miCarrito.articulos.length > 0) {
@@ -214,57 +312,33 @@ function finalizePurchase() {
             if (result.isConfirmed) {
                 const { firstName, lastName, email } = result.value;
                 
-                // Aquí puedes procesar la información del usuario si es necesario
-                console.log('Usuario:', firstName, lastName, email);
-                
-                Swal.fire({
-                    title: '¡Compra realizada con éxito! !Gracias por elegirnos!',
-                    html: `<p>El monto total es: <strong>${totalPrice}</strong></p>`,
-                    icon: 'success',
-                    showConfirmButton: true,
-                    confirmButtonText: 'Cerrar',
-                    customClass: {
-                        popup: 'animated fadeInDown'
+                showPaymentForm(totalPrice).then((paymentResult) => {
+                    if (paymentResult.isConfirmed) {
+                        const { paymentMethod, paymentDetails } = paymentResult.value;
+                        
+                        // Aquí puedes procesar la información del usuario y el pago si es necesario
+                        console.log('Usuario:', firstName, lastName, email);
+                        console.log('Pago:', paymentMethod, paymentDetails);
+                        
+                        Swal.fire({
+                            title: '¡Compra realizada con éxito! ¡Gracias por elegirnos!',
+                            html: `<p>El monto total es: <strong>${totalPrice}</strong></p>`,
+                            icon: 'success',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Cerrar',
+                            customClass: {
+                                popup: 'animated fadeInDown'
+                            }
+                        }).then(() => {
+                            miCarrito.limpiarCarrito();
+                            updateCart();
+                            updateCartCount();
+                        });
                     }
-                }).then(() => {
-                    miCarrito.limpiarCarrito();
-                    updateCart();
-                    updateCartCount();
                 });
             }
         });
     }
-}
-
-//Funcion para finalizar compra - formulario final
-function showUserForm(totalPrice) {
-    return Swal.fire({
-        title: 'Complete su información',
-        html: `
-            <input type="text" id="first-name" class="swal2-input" placeholder="Nombre">
-            <input type="text" id="last-name" class="swal2-input" placeholder="Apellido">
-            <input type="email" id="email" class="swal2-input" placeholder="Email">
-            <p>El monto total es: <strong>${totalPrice}</strong></p>
-        `,
-        icon: 'info',
-        showCancelButton: true,
-        confirmButtonText: 'Confirmar',
-        cancelButtonText: 'Cancelar',
-        customClass: {
-            popup: 'animated fadeInDown'
-        },
-        preConfirm: () => {
-            const firstName = Swal.getPopup().querySelector('#first-name').value;
-            const lastName = Swal.getPopup().querySelector('#last-name').value;
-            const email = Swal.getPopup().querySelector('#email').value;
-            
-            if (!firstName || !lastName || !email) {
-                Swal.showValidationMessage('Por favor, complete todos los campos');
-            }
-            
-            return { firstName, lastName, email };
-        }
-    });
 }
 
 // Inicializar aplicación
@@ -284,6 +358,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedCategory = this.value;
         filterProducts(selectedCategory);
     });
+});
+
+// Funcionalidad de búsqueda
+document.getElementById('search-input').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const filteredProducts = products.filter(product => 
+        product.name.toLowerCase().includes(searchTerm) ||
+        product.description.toLowerCase().includes(searchTerm)
+    );
+    displayProducts(filteredProducts);
 });
 
 let filteredGlobal = [];

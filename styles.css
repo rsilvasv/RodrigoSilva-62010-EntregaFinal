@@ -1,7 +1,8 @@
 
 body {
     font-family: "Nunito", sans-serif;
-    background-color: #222427;
+    background: url(images/fondo_body.png) no-repeat center center fixed;
+    background-size: cover; /* Esto asegura que la imagen de fondo cubra toda la pantalla */
 }
 
 .container {
@@ -93,10 +94,8 @@ main h3 {
 /* Estilos para el carrito de compras */
 #cart-list {
     padding: 1em;
-    border-radius: 10px;
     overflow-y: auto;
     overflow-x: hidden; /* Ocultar scroll horizontal */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: #fefeff;
     margin-bottom: 1rem;
 }
@@ -160,9 +159,8 @@ main h3 {
     z-index: 1000;
     box-sizing: border-box; /* Asegurar que padding y border se incluyan en el tamaño total */
     overflow-x: hidden; /* Ocultar scroll horizontal */
-    background: url(images/fondo_body.png);
+    background-color: #222427;
 }
-
 
 .carritoFisico.active {
     transform: translateX(0);
@@ -195,6 +193,11 @@ main h3 {
 #finalize-purchase-btn, #clear-cart-btn {
     flex: 1;
     margin: 0 0.5rem;
+}
+
+.total-finalize {
+    color: black !important;
+    margin: 1.5rem;
 }
 
 /* Estilos para el icono del carrito */
@@ -266,10 +269,9 @@ main h3 {
 }
 
 /* Boton cerrar carrito desplegable */
-
 #closeCart {
     position: absolute; /* Posicionar el botón de forma absoluta dentro del contenedor */
-    top: 3.7rem; /* Ajustar según el espacio deseado desde la parte superior */
+    top: 0.5rem; /* Ajustar según el espacio deseado desde la parte superior */
     right: 0.5rem; /* Ajustar según el espacio deseado desde el borde derecho */
     font-size: small;
     color: #fff;
@@ -283,6 +285,26 @@ main h3 {
     text-decoration-color: white; /* Cambia el color del subrayado a blanco */
 }
 
+/* Estilos para el input del formulario: */
+/* Estilos para alinear labels e inputs centrados */
+.swal2-form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos horizontalmente */
+    margin-bottom: 10px;
+}
+
+.swal2-form-group label {
+    margin-bottom: 5px;
+    font-size: 14px; /* Ajusta el tamaño de la fuente según tus necesidades */
+}
+
+.swal2-form-group input,
+.swal2-form-group select {
+    width: 200px; /* Ajusta el ancho según tus necesidades */
+    font-size: 14px; /* Ajusta el tamaño de la fuente según tus necesidades */
+    padding: 5px;
+}
 
 /* Estilos para los botones de las cards */
 .btn-primary {
@@ -462,7 +484,9 @@ footer .redes img {
 }
 
 .nav-item .nav-link img {
-    height: 24px;
+    height: 40px;
+    background:none;
+    border: none;
 }
 
 /* Dropdown Carrito */
@@ -476,4 +500,32 @@ footer .redes img {
     overflow-y: auto;
 }
 
+/* Estilos para el buscador */
+.search-icon {
+    width: 16px;
+    height: 16px;
+}
 
+#searchForm {
+    display: flex;
+    align-items: center;
+}
+
+#searchInput {
+    flex: 1;
+    padding-right: 30px; /* Espacio para el icono de búsqueda */
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 2rem;
+    width: 350px;
+}
+
+#searchForm button {
+    background: none;
+    border: none;
+}
+
+#searchForm button img {
+    width: 20px;
+    height: 20px;
+}
