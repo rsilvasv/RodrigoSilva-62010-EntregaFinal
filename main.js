@@ -207,7 +207,7 @@ function removeFromCart(productId) {
 
 
 // PROCESO DE COMPRA
-// Formulario de usuario con datos pre-completados
+// Formulario de usuario
 function showUserForm(totalPrice) {
     return Swal.fire({
         title: 'Complete su información',
@@ -316,10 +316,6 @@ function finalizePurchase() {
                     if (paymentResult.isConfirmed) {
                         const { paymentMethod, paymentDetails } = paymentResult.value;
                         
-                        // Aquí puedes procesar la información del usuario y el pago si es necesario
-                        console.log('Usuario:', firstName, lastName, email);
-                        console.log('Pago:', paymentMethod, paymentDetails);
-                        
                         Swal.fire({
                             title: '¡Compra realizada con éxito! ¡Gracias por elegirnos!',
                             html: `<p>El monto total es: <strong>${totalPrice}</strong></p>`,
@@ -341,12 +337,7 @@ function finalizePurchase() {
     }
 }
 
-// Inicializar aplicación
-function initApp() {
-    displayProducts(products);
-    updateCart();
-    updateCartCount();
-}
+
 
 //Integracion del data.json
 document.addEventListener('DOMContentLoaded', fetchProducts);
@@ -360,22 +351,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Funcionalidad de búsqueda
-document.getElementById('search-input').addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase();
-    const filteredProducts = products.filter(product => 
-        product.name.toLowerCase().includes(searchTerm) ||
-        product.description.toLowerCase().includes(searchTerm)
-    );
-    displayProducts(filteredProducts);
-});
-
+//Filtro de productos
 let filteredGlobal = [];
 
-// Paso 1: Define el evento personalizado
 const filteredNotEmptyEvent = new CustomEvent('filteredNotEmpty');
 console.log(filteredNotEmptyEvent);
-// Paso 2: Modifica la función filterProducts para disparar el evento
+
 function filterProducts(category) {
     let filteredProducts = products;
     if (category !== 'all') {
@@ -385,14 +366,20 @@ function filterProducts(category) {
     filteredGlobal = filteredProducts;
     console.log(filteredGlobal);
 
-    // Dispara el evento si filteredGlobal no está vacío
+    
     if (filteredGlobal.length > 0) {
         document.dispatchEvent(filteredNotEmptyEvent);
         console.log(filteredNotEmptyEvent);
     }
 }
 
-// Paso 3: Escucha el evento y ejecuta la función displayProducts
 document.addEventListener('filteredNotEmpty', function() {
     displayProducts(filteredGlobal);
 });
+
+// Inicializar aplicación
+function initApp() {
+    displayProducts(products);
+    updateCart();
+    updateCartCount();
+}
