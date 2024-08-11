@@ -93,7 +93,7 @@
         "category": "Fertilizantes",
         "price": 30000,
         "image": "images/azteka-blackmagic.png",
-        "description": "."
+        "description": "Azteca Black Magic es un fertilizante premium diseñado para mejorar el desarrollo radicular y potenciar el crecimiento de las plantas."
     },
     {
         "id": 14,
@@ -101,7 +101,7 @@
         "category": "Fertilizantes",
         "price": 30000,
         "image": "images/azteka-budha.png",
-        "description": "."
+        "description": "Azteca Budha Juice es un fertilizante líquido que maximiza la absorción de nutrientes, ideal para la fase de floración."
     },
     {
         "id": 15,
@@ -109,7 +109,7 @@
         "category": "Fertilizantes",
         "price": 20000,
         "image": "images/azteka-devil.png",
-        "description": "."
+        "description": "Azteka Devil Juice es un estimulador de crecimiento que acelera el desarrollo vegetativo y mejora la resistencia de las plantas."
     },
     {
         "id": 16,
@@ -117,7 +117,7 @@
         "category": "Fertilizantes",
         "price": 25000,
         "image": "images/azteka-miracle.png",
-        "description": "."
+        "description": "Azteka Miracle es un fertilizante completo que optimiza el rendimiento de las plantas en todas las etapas del cultivo."
     },
     {
         "id": 17,
@@ -125,7 +125,7 @@
         "category": "Fertilizantes",
         "price": 25000,
         "image": "images/azteka-monsterweed.png",
-        "description": "."
+        "description": "Azteka Monster Weed está formulado para promover un crecimiento vigoroso, aumentando el tamaño y la densidad de las flores."
     },
     {
         "id": 18,
@@ -133,7 +133,7 @@
         "category": "Fertilizantes",
         "price": 11000,
         "image": "images/azteka-seamagic.png",
-        "description": "."
+        "description": "Azteka Sea Magic es un bioestimulante a base de algas marinas que mejora la salud general y el crecimiento de las plantas."
     },
     {
         "id": 19,
@@ -141,7 +141,7 @@
         "category": "Fertilizantes",
         "price": 11000,
         "image": "images/azteka-superhoney.png",
-        "description": "."
+        "description": "Azteka Super Honey es un aditivo natural que aumenta la producción de azúcares, mejorando la calidad del sabor y el aroma."
     },
     {
         "id": 20,
@@ -149,7 +149,7 @@
         "category": "Herramientas",
         "price": 19000,
         "image": "images/bluelab-ec.png",
-        "description": "."
+        "description": "El medidor de EC, humedad y temperatura de Blue Lab ofrece una precisión y fiabilidad excepcionales para optimizar las condiciones de cultivo."
     },
     {
         "id": 21,
@@ -157,7 +157,7 @@
         "category": "Herramientas",
         "price": 10000,
         "image": "images/bluelab-monitor.png",
-        "description": "."
+        "description": "El monitor Guardian Connect de Blue Lab permite la supervisión continua de los niveles de pH, EC y temperatura para un control preciso del entorno de cultivo."
     },
     {
         "id": 22,
@@ -165,7 +165,7 @@
         "category": "Herramientas",
         "price": 11000,
         "image": "images/bluelab-portatil.png",
-        "description": "."
+        "description": "El conductímetro portátil CONPEN de Blue Lab es una herramienta esencial para medir la concentración de nutrientes en soluciones de cultivo."
     },
     {
         "id": 23,
@@ -173,7 +173,7 @@
         "category": "Herramientas",
         "price": 45000,
         "image": "images/garden-proactiv.png",
-        "description": "."
+        "description": "El extractor de aire Garden ProActiv es ideal para mantener una ventilación eficiente en áreas de cultivo de tamaño medio."
     },
     {
         "id": 24,
@@ -181,7 +181,7 @@
         "category": "Herramientas",
         "price": 1000,
         "image": "images/garden-pulve.png",
-        "description": "."
+        "description": "El pulverizador Garden Pulve Deluxe es una herramienta compacta y eficaz para la aplicación de nutrientes y pesticidas en plantas."
     },
     {
         "id": 25,
@@ -189,7 +189,7 @@
         "category": "Herramientas",
         "price": 16000,
         "image": "images/gardenpro-dry.png",
-        "description": "."
+        "description": "El secador Garden ProDry Basic de 90 cm es ideal para secar cosechas de manera eficiente, asegurando una calidad óptima."
     },
     {
         "id": 26,
@@ -197,7 +197,7 @@
         "category": "Herramientas",
         "price": 11000,
         "image": "images/gralf-termometro.png",
-        "description": "."
+        "description": "El termómetro digital de panel GRALF proporciona lecturas precisas de temperatura en tiempo real, esencial para un control ambiental riguroso."
     },
     {
         "id": 27,
@@ -205,7 +205,7 @@
         "category": "Herramientas",
         "price": 35000,
         "image": "images/grower-filtrom.png",
-        "description": "."
+        "description": "El filtro de olor MAER M de Grower Things elimina eficientemente los olores indeseables, manteniendo el aire fresco en el área de cultivo."
     },
     {
         "id": 28,
@@ -213,6 +213,6 @@
         "category": "Herramientas",
         "price": 45000,
         "image": "images/grower-filtroxl.png",
-        "description": "."
+        "description": "El filtro de olor MAER XL de Grower Things es ideal para grandes áreas de cultivo, ofreciendo una potente eliminación de olores con gran capacidad de filtrado."
     }
 ]

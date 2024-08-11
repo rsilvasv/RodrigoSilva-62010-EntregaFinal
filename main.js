@@ -355,7 +355,6 @@ document.addEventListener('DOMContentLoaded', () => {
 let filteredGlobal = [];
 
 const filteredNotEmptyEvent = new CustomEvent('filteredNotEmpty');
-console.log(filteredNotEmptyEvent);
 
 function filterProducts(category) {
     let filteredProducts = products;

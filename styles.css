@@ -422,44 +422,6 @@ footer .redes img {
 }
 
 
-
-/* Modales */
-
-.modal-content {
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.modal-header {
-    border-bottom: none;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    background-color: #f8f9fa;
-    padding: 1rem 1.5rem;
-}
-
-.modal-title {
-    font-size: 1.75rem;
-}
-
-.modal-body {
-    padding: 1.5rem;
-    font-size: 1rem;
-}
-
-.modal-footer {
-    border-top: none;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: #f8f9fa;
-    padding: 1rem 1.5rem;
-}
-
-.close {
-    font-size: 1.5rem;
-    color: #333;
-}
-
 .close:hover {
     color: #000;
 }
@@ -468,7 +430,7 @@ footer .redes img {
     color: #222427;
     font-weight: 400;
     text-align: justify;
-}
+} 
 
 /* Navbar */
 .navbar {
